@@ -11,7 +11,8 @@
   (is (= 'some-method-name (strs->symbol ["some" "method" "name"]))))
 
 (deftest java->clj
-  (is (= 'some-method-name (dashed-symbol 'someMethodName))))
+  (is (= 'some-method-name (dashed-symbol 'someMethodName)))
+  (is (= 'javaMName (camel-symbol 'java-m-name))))
 
 (defmacro defnv
   "Same as defn, just all the arguments must be in 1 coll."
