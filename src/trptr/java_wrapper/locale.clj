@@ -1,6 +1,8 @@
 (ns trptr.java-wrapper.locale
 
-  "Clojure wrapper for Java Locale.
+  "Clojure wrapper for java.util.Locale.
+
+  The main fn: [[locale]].
 
   Note: wherever a Java method requires a Locale object, not only such an object,
   but also a \"locale specification\" is accepted.
