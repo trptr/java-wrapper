@@ -1,6 +1,6 @@
 ;; this project.clj is used only for codox API doc generation + Clojars deployment
-(defproject trptr/java-wrapper "0.2.0"
-  :description "Clojure wrappers for various Java classes: java.util.Locale..."
+(defproject trptr/java-wrapper "0.2.1"
+  :description "Clojure wrappers for various Java classes: Locale (java.util.Locale)..."
   :url "https://github.com/trptr/java-wrapper"
   :license {:name "GNU General Public License v3.0"
             :url  "https://github.com/trptr/java-wrapper/blob/master/LICENSE"}
@@ -8,4 +8,5 @@
   :plugins  [[lein-codox "0.10.5"]]
   :codox {:metadata    {:doc/format :markdown}
           :output-path "docs"
-          :source-uri  "https://github.com/trptr/java-wrapper/blob/master/{filepath}#L{line}"})
+          :source-uri  "https://github.com/trptr/java-wrapper/blob/master/{filepath}#L{line}"}
+  :profiles {:uberjar {:aot :all}})
