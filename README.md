@@ -43,7 +43,7 @@ behind the scenes, as needed:
 
 ## Status
 
-The latest version is 0.2.1, containing wrappers for 1 class: `java.util.Locale`.
+The latest version is 0.2.2, containing wrappers for 1 class: `java.util.Locale`.
 
 Coming soon: `java.text.NumberFormat`.
 

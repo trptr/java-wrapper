@@ -1,6 +1,10 @@
+# version 0.2.2
+
+Fix a bug in the util macro `doseq-m` that made some execution via `java -jar ...` to fail.
+
 # version 0.2.1
 
-Add `:aot :all` to lein profile `:uberjar` (to fix issue with usage from clojars via lein)
+Add `:aot :all` to lein profile `:uberjar`.
 
 # version 0.2.0
 

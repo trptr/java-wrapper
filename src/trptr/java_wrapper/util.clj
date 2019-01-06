@@ -34,8 +34,8 @@
 (defmacro doseq-m
   "Calls macro on each element of coll."
   [macro coll]
-  (doseq [x coll]
-    (eval `(~macro ~x))))
+  `(do ~@(for [x coll]
+           `(~macro ~x))))
 
 (defmacro if-call
   "Calls `method` of `obj` if `arg` is non nil. Returns `obj`.  

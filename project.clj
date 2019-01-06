@@ -1,5 +1,5 @@
 ;; this project.clj is used only for codox API doc generation + Clojars deployment
-(defproject trptr/java-wrapper "0.2.1"
+(defproject trptr/java-wrapper "0.2.2"
   :description "Clojure wrappers for various Java classes: Locale (java.util.Locale)..."
   :url "https://github.com/trptr/java-wrapper"
   :license {:name "GNU General Public License v3.0"
