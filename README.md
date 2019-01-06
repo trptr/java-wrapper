@@ -2,6 +2,8 @@
 
 Clojure wrappers for various Java classes.
 
+[![Clojars Project](https://img.shields.io/clojars/v/trptr/java-wrapper.svg)](https://clojars.org/trptr/java-wrapper)
+
 ## Goal
 
 Provide APIs for Java classes that make their usage comfortable within Clojure.
@@ -48,16 +50,44 @@ The latest version is 0.2.2, containing wrappers for 1 class: `java.util.Locale`
 Coming soon: `java.text.NumberFormat`.
 
 
-## Usage via `deps.edn`
+## Usage
 
-Include a dependency on this repo in your `deps.edn`. For example:
+### Via `deps.edn`
+
+#### Using a git url
+
+Include a dependency on this repo in your `deps.edn`. For exmaple:
 
 ```clojure
 {:deps {org.clojure/clojure {:mvn/version "1.10.0"}
         trptr/java-wrapper  {:git/url "https://github.com/trptr/java-wrapper.git"
-                             :sha     "722d2cca910880d66debacdd4ef724aea37156d7"}}}
+                             :sha     "e9dc1df3e4788b9c5a2b344fdc2b9cb71763e29f"}}}
 ```
-Then require the proper namespace as needed. For example:
+
+#### Using mvn version
+
+Include a dependency on the mvn version in your `deps.edn`. For exmaple:
+
+```clojure
+{:deps {org.clojure/clojure {:mvn/version "1.10.0"}
+        trptr/java-wrapper  {:mvn/version "0.2.2"}}}
+```
+### Via Leiningen
+
+Include a dependency on the mvn version in your `project.clj`. For exmaple:
+
+```clojure
+:dependencies [[org.clojure/clojure "1.10.0"]
+               [trptr/java-wrapper "0.2.2"]]
+```
+
+### Others
+
+See https://clojars.org/trptr/java-wrapper.
+
+### Inside your `ns`
+
+Require the proper trptr namespace(s). For example:
 
 ```clojure
 (ns my-namespace
