@@ -56,7 +56,7 @@ Coming soon: `java.text.NumberFormat`.
 
 #### Using a git url
 
-Include a dependency on this repo in your `deps.edn`. For exmaple:
+Include a dependency on this repo in your `deps.edn`. For example:
 
 ```clojure
 {:deps {org.clojure/clojure {:mvn/version "1.10.0"}
@@ -66,7 +66,7 @@ Include a dependency on this repo in your `deps.edn`. For exmaple:
 
 #### Using mvn version
 
-Include a dependency on the mvn version in your `deps.edn`. For exmaple:
+Include a dependency on the mvn version in your `deps.edn`. For example:
 
 ```clojure
 {:deps {org.clojure/clojure {:mvn/version "1.10.0"}
@@ -74,7 +74,7 @@ Include a dependency on the mvn version in your `deps.edn`. For exmaple:
 ```
 ### Via Leiningen
 
-Include a dependency on the mvn version in your `project.clj`. For exmaple:
+Include a dependency on the mvn version in your `project.clj`. For example:
 
 ```clojure
 :dependencies [[org.clojure/clojure "1.10.0"]
