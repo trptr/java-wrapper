@@ -102,6 +102,13 @@ Require the proper trptr namespace(s). For example:
        println))
 ```
 
-## License
+## Copyright and License
 
-GPL-3.0 -- if you need other licensing, let me know!
+Copyright 2018, 2019 trptr
+
+trptr/java-wrapper is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+If you need other licensing, let me know!
