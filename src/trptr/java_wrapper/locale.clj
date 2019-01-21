@@ -83,6 +83,7 @@
 
   See also [[to-language-tag]]!"
 
+  ^Locale
   [{:keys [#_extension language language-tag locale region script variant]}]
   (-> (cond-> (Locale$Builder.)
         ;;extension
@@ -100,9 +101,9 @@
   * an optional country code OR keyword (\"DE\" or :de) and  
   * an optional vendor-specific variant code.  
   Case insensitive."
-  ([lang]                 (Locale. (language-code lang)))
-  ([lang country]         (Locale. (language-code lang) (country-code country)))
-  ([lang country variant] (Locale. (language-code lang) (country-code country) variant)))
+  (^Locale [lang]                 (Locale. (language-code lang)))
+  (^Locale [lang country]         (Locale. (language-code lang) (country-code country)))
+  (^Locale [lang country variant] (Locale. (language-code lang) (country-code country) variant)))
 
 ;;; Locale.Category
 ;;(def locale-category-values #(java.util.Locale$Category/values)) ;; makes sense?? -- use 'categories' instead
@@ -114,8 +115,8 @@
 (defn get-default
   "Direct wrapper of the Java method.  
   `locale-category` is a value from the map [[categories]]."
-  ([] (Locale/getDefault))
-  ([locale-category] (Locale/getDefault locale-category)))
+  (^Locale [] (Locale/getDefault))
+  (^Locale [locale-category] (Locale/getDefault locale-category)))
 
 (def split-locale
   "Accepts a string or a keyword and returns a vector of strings created from the argument's parts.  
@@ -142,15 +143,15 @@
 
   Valid `spec` examples:
   `\"fr-ar\"`, `\"EN_CA-variaNt\"`, `:ar--vari2`, `:-ng`, `:ru_CN`, `{:variant \"varIAnt\"}`."
-  ([] (get-default))
-  
-  ([spec] (cond
-            (instance? Locale spec) spec
-            (map? spec)             (build spec)
-            (nil? spec)             (get-default)
-            :else                   (apply make-locale (split-locale spec))))
+  (^Locale [] (get-default))
 
-  ([lang & others] (apply make-locale lang others)))
+  (^Locale [spec] (cond
+                    (instance? Locale spec) spec
+                    (map? spec)             (build spec)
+                    (nil? spec)             (get-default)
+                    :else                   (apply make-locale (split-locale spec))))
+
+  (^Locale [lang & others] (apply make-locale lang others)))
 
 (def available-locales
   "Wrapper of the Java method 'getAvailableLocales', as a set.  
@@ -174,10 +175,12 @@
 (def iso-language-kw "Turns its argument into an ISO language code keyword OR `nil`." (comp iso-languages low-kw))
 
 ;;; other static methods
-(def for-language-tag
+(defn for-language-tag
   "Direct wrapper of the Java method. See also [[to-language-tag]]!  
   Example: `(for-language-tag \"fr-FR\")` → `#object[java.util.Locale 0x163fd507 \"fr_FR\"]`."
-  #(Locale/forLanguageTag %))
+  ^Locale
+  [language-tag]
+  (Locale/forLanguageTag language-tag))
 
 (defmacro ^:private defn-locale-spec-wrapper
   "Same as `defn`, but prepends a ~fix text to the docstring."
@@ -196,7 +199,7 @@
   ([locale-category new-locale] (Locale/setDefault locale-category (locale new-locale))))
 
 ;;; other instance methods
-(def to-language-tag
+(defn to-language-tag
   "Wrapper of the Java method, but accepts \"locale specifications\" as well.  
 
   Can be used to 'serialize' a Locale object as a string, that can later be used to recreate the object:
@@ -209,17 +212,19 @@
   and use the forLanguageTag and Locale.Builder APIs instead.
 
   Clients desiring a string representation of the complete locale can then always rely on toLanguageTag for this purpose.\""
-  #(.toLanguageTag (locale %)))
+  ^String
+  [loc]
+  (.toLanguageTag (locale loc)))
 
 (defmacro ^:private defn-on-locale
   "A specialized version of `defn`, used to create wrappers of the simplest instance methods of Locale. "
-  [java-method-name]
+  [[type-hint java-method-name]]
   (let [clj-fn-name (jwu/dashed-symbol java-method-name)]
-    `(defn-locale-spec-wrapper ~clj-fn-name nil [loc#] (. (locale loc#) ~java-method-name))))
+    `(defn-locale-spec-wrapper ~clj-fn-name nil ^{:tag ~type-hint} [loc#] (. (locale loc#) ~java-method-name))))
 
 (jwu/doseq-m defn-on-locale
-             [getLanguage getCountry getVariant getScript
-              hasExtensions stripExtensions])
+             [[String getLanguage] [String getCountry] [String getVariant] [String getScript]
+              [Boolean hasExtensions] [Locale stripExtensions]])
 
 (defmacro ^:private defn-get-display-property
   "A specialized version of `defn`, used for the creation of wrappers for instance methods
@@ -227,18 +232,19 @@
   [java-method-name]
   (let [clj-fn-name (jwu/dashed-symbol java-method-name)]
     `(defn-locale-spec-wrapper ~clj-fn-name nil
-       ([loc#] (. (locale loc#) ~java-method-name))
-       ([loc# in-locale#] (. (locale loc#) ~java-method-name (locale in-locale#))))))
+       (^String [loc#] (. (locale loc#) ~java-method-name))
+       (^String [loc# in-locale#] (. (locale loc#) ~java-method-name (locale in-locale#))))))
 
 (jwu/doseq-m defn-get-display-property
              [getDisplayLanguage getDisplayCountry getDisplayVariant getDisplayScript getDisplayName])
 
-(defn-locale-spec-wrapper get-iso-3-language nil [loc] (.getISO3Language (locale loc)))
+(defn-locale-spec-wrapper get-iso-3-language nil ^String [loc] (.getISO3Language (locale loc)))
 
 (defn-locale-spec-wrapper get-iso-3-country 
   "  \nNote: if the argument is a string or a keyword, then 
   the country comes from the second subtag.
   So use e.g. `:-an` or \"-an\" instead of `:an` or \"an\"."
+  ^String
   [loc]
   (.getISO3Country (locale loc)))
 
