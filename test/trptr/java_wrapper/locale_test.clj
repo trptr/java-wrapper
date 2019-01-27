@@ -26,7 +26,10 @@
   (is (= :es (iso-language-kw "es")))
   (is (nil? (iso-language-kw "sb")))
 
-  (is (= Locale/GERMANY (:locale/germany predef-locales))))
+  (is (= Locale/GERMANY (:locale/germany predef-locales)))
+
+  (is (= "fr" (get-language :fr)))
+  (is (not (has-extensions :fr))))
 
 (deftest creating-locales+properties
 
@@ -63,4 +66,6 @@
 
 (deftest language-tag-handling
   (let [loc (locale :fr-ca)]
-    (is (= loc (build {:language-tag (to-language-tag loc)})))))
+    (is (= loc
+           (for-language-tag "fr-CA")
+           (build {:language-tag (to-language-tag loc)})))))
