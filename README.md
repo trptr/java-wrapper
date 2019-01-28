@@ -23,8 +23,11 @@ with the equivalent code using `trptr.java-wrapper.locale/build`:
         :script   "Cyrl"})
 ```
 
-In simpler cases a keyword (or a string...) can substitute a complete object, which is then created on the fly,
-behind the scenes, as needed:
+The latter is idiomatic Clojure, so can be used in idiomatic Clojure ways comfortably, e.g.
+the map can be `merge`d with other maps, mappings can be `assoc`ed, `dissoc`ed or selected, etc.
+
+Moreover, in simpler cases a keyword (or a string...) can substitute a complete object,
+which is then created on the fly, behind the scenes, as needed:
 
 ```clojure
 (get-display-name :de-ch :en)
@@ -48,6 +51,8 @@ behind the scenes, as needed:
 The latest version is 0.2.2, containing wrappers for 1 class: `java.util.Locale`.
 
 Coming soon: `java.text.NumberFormat`.
+
+Bug reports and new wrapper requests [are welcome](https://github.com/trptr/java-wrapper/issues/new/choose).
 
 
 ## Usage
