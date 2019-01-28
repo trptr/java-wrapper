@@ -48,7 +48,7 @@ which is then created on the fly, behind the scenes, as needed:
 
 ## Status
 
-The latest version is 0.2.2, containing wrappers for 1 class: `java.util.Locale`.
+The latest version is 0.2.3, containing wrappers for 1 class: `java.util.Locale`.
 
 Coming soon: `java.text.NumberFormat`.
 
@@ -66,7 +66,7 @@ Include a dependency on this repo in your `deps.edn`. For example:
 ```clojure
 {:deps {org.clojure/clojure {:mvn/version "1.10.0"}
         trptr/java-wrapper  {:git/url "https://github.com/trptr/java-wrapper.git"
-                             :sha     "e9dc1df3e4788b9c5a2b344fdc2b9cb71763e29f"}}}
+                             :sha     "1b0da6aceee551e925174c7e72a8fa41dc5e57a0"}}}
 ```
 
 #### Using mvn version
@@ -75,7 +75,7 @@ Include a dependency on the mvn version in your `deps.edn`. For example:
 
 ```clojure
 {:deps {org.clojure/clojure {:mvn/version "1.10.0"}
-        trptr/java-wrapper  {:mvn/version "0.2.2"}}}
+        trptr/java-wrapper  {:mvn/version "0.2.3"}}}
 ```
 ### Via Leiningen
 
@@ -83,7 +83,7 @@ Include a dependency on the mvn version in your `project.clj`. For example:
 
 ```clojure
 :dependencies [[org.clojure/clojure "1.10.0"]
-               [trptr/java-wrapper "0.2.2"]]
+               [trptr/java-wrapper "0.2.3"]]
 ```
 
 ### Others
