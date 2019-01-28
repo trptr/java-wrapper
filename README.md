@@ -66,7 +66,7 @@ Include a dependency on this repo in your `deps.edn`. For example:
 ```clojure
 {:deps {org.clojure/clojure {:mvn/version "1.10.0"}
         trptr/java-wrapper  {:git/url "https://github.com/trptr/java-wrapper.git"
-                             :sha     "1b0da6aceee551e925174c7e72a8fa41dc5e57a0"}}}
+                             :sha     "66a41e22bbdc67fab2a5039c551c5c79dc9b662f"}}}
 ```
 
 #### Using mvn version
